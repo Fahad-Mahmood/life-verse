@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber';
+import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import {ClinicModel} from '../src/components/ClinicModel';
-import { PerspectiveCamera } from '@react-three/drei';
+import { Ground } from '../src/components/Ground';
 
 import styles from '../styles/Home.module.css'
-import { OrbitControls } from '@react-three/drei';
 
 export default function Home() {
   return (
@@ -21,6 +21,7 @@ export default function Home() {
           <gridHelper />
           <axesHelper/>
           <ClinicModel/>
+          <Ground />
    <ambientLight intensity={1} />
           <OrbitControls />
           <PerspectiveCamera />

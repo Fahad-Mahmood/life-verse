@@ -4,10 +4,10 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { useFBX } from "@react-three/drei";
 import * as THREE from "three";
 
-import { Mesh } from "three";
-
 const Character = ({ camera }) => {
+
   const character = useRef(null);
+  const objRef = useRef(null);
 
   const activeAnimation = {
     forward: false,
@@ -70,7 +70,6 @@ const Character = ({ camera }) => {
     switch (event.keyCode) {
       case 87: //w
         activeAnimation.forward = true;
-
         break;
 
       case 65: //a
@@ -125,6 +124,16 @@ const Character = ({ camera }) => {
         break;
     }
   }, []);
+
+  /*useEffect(() => {
+    setInterval(() => {
+     if(character) {
+      console.log('from interval', character?.current);
+      console.log( character?.current);
+      console.log(objRef?.current)
+     }
+    }, 1000);
+  }, []); */
 
   const calculateIdealOffset = () => {
     const idealOffset = new THREE.Vector3(0, 20, -30);
@@ -285,7 +294,7 @@ const Character = ({ camera }) => {
     };
   });
 
-  return <primitive object={c} ref={character} />;
+  return <object3D ref={objRef}><primitive object={c} ref={character} /> </object3D>;
 };
 
 export default Character;
